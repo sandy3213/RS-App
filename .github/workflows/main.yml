@@ -1,38 +1,30 @@
-name: Flutter APK Build
+name: Autonomous Super AI Agent
 
 on:
-  push:
-    branches: [ main ]
-  workflow_dispatch:
+  schedule:
+    - cron: '*/5 * * * *' # हर 5 मिनट में अपने आप चलेगा
+  workflow_dispatch: # मैन्युअली चलाने के लिए बटन
 
 jobs:
-  build:
+  run-agent:
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v4
+      - name: Check out repository
+        uses: actions/checkout@v3
 
-    - name: Set up Java
-      uses: actions/setup-java@v4
-      with:
-        distribution: 'zulu'
-        java-version: '17'
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
 
-    - name: Set up Flutter
-      uses: subosito/flutter-action@v2
-      with:
-        flutter-version: '3.19.x'
-        channel: 'stable'
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
 
-    - name: Scaffold Flutter Android Project & Build
-      run: |
-        flutter create temp_app --org com.rssecurities.app
-        cp main.dart temp_app/lib/main.dart
-        cd temp_app
-        flutter build apk --release
-
-    - name: Upload APK
-      uses: actions/upload-artifact@v4
-      with:
-        name: release-apk
-        path: temp_app/build/app/outputs/flutter-apk/app-release.apk
+      - name: Run AI Agent Engine
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          GMAIL_USER: ${{ secrets.GMAIL_USER }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+        run: |
+          python main.py
