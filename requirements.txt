@@ -3,9 +3,7 @@ requests
 moviepy
 yt-dlp
 google-generativeai
-- name: Install dependencies
-  run: pip install moviepy
-
 python-telegram-bot
 pillow
 numpy
+
