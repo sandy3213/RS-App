@@ -1,9 +1,7 @@
 name: Autonomous Super AI Agent
 
 on:
-  schedule:
-    - cron: '*/5 * * * *' # हर 5 मिनट में अपने आप चलेगा
-  workflow_dispatch: # मैन्युअली चलाने के लिए बटन
+  workflow_dispatch: # अब यह केवल तभी चलेगा जब आप इसे मैन्युअली चलाएंगे या ट्रिगर करेंगे
 
 jobs:
   run-agent:
@@ -24,6 +22,7 @@ jobs:
       - name: Run AI Agent Engine
         env:
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           GMAIL_USER: ${{ secrets.GMAIL_USER }}
           GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
         run: |
