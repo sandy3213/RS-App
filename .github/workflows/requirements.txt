@@ -1,0 +1,7 @@
+requests
+moviepy
+yt-dlp
+google-generativeai
+python-telegram-bot
+pillow
+numpy
