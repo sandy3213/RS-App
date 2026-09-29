@@ -1,7 +1,7 @@
 name: Autonomous Super AI Agent
 
 on:
-  workflow_dispatch: # अब यह केवल तभी चलेगा जब आप इसे मैन्युअली चलाएंगे या ट्रिगर करेंगे
+  workflow_dispatch: # अब यह केवल तभी चलेगा जब आप इसे मैन्युअली या ट्रिगर करेंगे
 
 jobs:
   run-agent:
