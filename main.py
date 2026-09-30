@@ -1,5 +1,6 @@
 import os
 import requests
+import time
 from openai import OpenAI
 from moviepy.editor import VideoFileClip, AudioFileClip
 
@@ -87,4 +88,5 @@ def download_pexels_footage(query="gaming gameplay"):
 
 if __name__ == "__main__":
     print("Bot is ready and running...")
-    # यहाँ आप अपना मुख्य बोट लूप या कोड चला सकते हैं
+    while True:
+        time.sleep(60)
