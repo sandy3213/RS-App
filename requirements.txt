@@ -1,6 +1,6 @@
 openai
 requests
-moviepy
+moviepy==1.0.3
 yt-dlp
 google-generativeai
 python-telegram-bot
